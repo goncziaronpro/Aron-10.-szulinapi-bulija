@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARON | 10TH BIRTHDAY</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;
+ min-height:100vh;
+ color:#fff2ce;
+ background:radial-gradient(circle at top,#29345c,#090b19 70%);
+ font-family:Georgia,serif;
+ text-align:center;
+}
+header{padding:25px;color:#eac36d;letter-spacing:4px}
+.hero{padding:65px 20px 35px}
+.magic{font-size:55px;color:#eac36d;text-shadow:0 0 30px #eac36d}
+h1{font-size:clamp(38px,9vw,68px);margin:15px 0;color:#f5d994}
+h1 span{color:#69dff5}
+.subtitle{font-size:18px;color:#c5c9db}
+.card{
+ max-width:540px;margin:25px auto;padding:30px 22px;
+ background:#11182be8;border:1px solid #c69b50;
+ border-radius:18px;box-shadow:0 0 35px #d3a34b22;
+}
+h2{color:#eac36d}
+input,button{
+ width:100%;padding:15px;margin-top:12px;
+ border-radius:9px;font-size:16px;
+}
+input{background:#080e1e;border:1px solid #64708b;color:white}
+button{
+ background:linear-gradient(120deg,#ffe5a1,#bd8837);
+ color:#171321;border:0;font-weight:bold;cursor:pointer;
+}
+button:hover{filter:brightness(1.15)}
+#result{margin-top:20px;line-height:1.7}
+.features{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin:30px 15px}
+.feature{background:#17213b;border:1px solid #4c5878;padding:17px;border-radius:12px}
+footer{padding:30px;color:#8993ad;font-size:12px;letter-spacing:2px}
+</style>
+</head>
+<body>
+<header>✦ ARON VIP PORTAL ✦</header>
+
+<section class="hero">
+<div class="magic">⚡</div>
+<h1>THE <span>10TH</span><br>BIRTHDAY</h1>
+<p class="subtitle">A magical adventure is waiting for you.</p>
+<p>🏰 HOGWARTS • 🎮 GAMER • ⭐ VIP</p>
+</section>
+
+<section class="card">
+<h2>🪄 Your Invitation</h2>
+<p>Üdv a titkos születésnapi portálon!</p>
+<p>Add meg a személyes meghívókódodat.</p>
+<input id="code" placeholder="MEGHÍVÓKÓD">
+<button onclick="checkInvite()">BELÉPÉS ✨</button>
+<div id="result"></div>
+</section>
+
+<div class="features">
+<div class="feature">🏰 Harry Potter</div>
+<div class="feature">🔐 Szabadulószoba</div>
+<div class="feature">⭐ VIP meghívás</div>
+</div>
+
+<footer>ARON'S 10TH BIRTHDAY • PRIVATE INVITATION</footer>
+
+<script>
+async function checkInvite(){
+ const code=document.getElementById("code").value.trim();
+ const result=document.getElementById("result");
+ if(!code){
+  result.textContent="Először írd be a kódodat!";
+  return;
+ }
+ result.textContent="Meghívó ellenőrzése...";
+ try{
+  const response=await fetch("/api/invite?token="+encodeURIComponent(code));
+  const data=await response.json();
+  if(!response.ok) throw new Error(data.error||"Érvénytelen meghívó!");
+  result.innerHTML="";
+  const title=document.createElement("h2");
+  title.textContent="✨ ÜDVÖZLÜNK, "+data.guest+"!";
+  const text=document.createElement("p");
+  text.textContent="A meghívód érvényes! Készülj a varázslatos kalandra!";
+  result.append(title,text);
+ }catch(error){
+  result.textContent=error.message;
+ }
+}
+</script>
+</body>
+</html>
