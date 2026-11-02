@@ -1,0 +1,43 @@
+
+const { airtable } = require("./_airtable");
+
+module.exports = async (req, res) => {
+  res.setHeader("Cache-Control", "no-store");
+
+  if (req.method !== "GET") {
+    return res.status(405).json({
+      error: "Method not allowed"
+    });
+  }
+
+  const authorization = req.headers.authorization || "";
+
+  if (
+    !process.env.ADMIN_KEY ||
+    authorization !== `Bearer ${process.env.ADMIN_KEY}`
+  ) {
+    return res.status(401).json({
+      error: "Unauthorized"
+    });
+  }
+
+  try {
+    const data = await airtable("?pageSize=100");
+
+    const guests = (data.records || []).map(record => ({
+      name: record.fields.Name || "",
+      rsvp: record.fields.RSVP || "Még nem válaszolt",
+      plusOne: record.fields.PlusOne || 0,
+      active: !!record.fields.Active
+    }));
+
+    return res.status(200).json(guests);
+
+  } catch (error) {
+    console.error(error);
+
+    return res.status(500).json({
+      error: "Nem sikerült betölteni a vendégeket."
+    });
+  }
+};
