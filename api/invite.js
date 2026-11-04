@@ -33,7 +33,7 @@ module.exports = async (req, res) => {
 
     return res.status(200).json({
       valid: true,
-      guest: guest.fields.Name,
+      guest: guest.fields.Guest Name,
       rsvp: guest.fields.RSVP || "Még nem válaszolt"
     });
 
