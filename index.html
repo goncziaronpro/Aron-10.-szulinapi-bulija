@@ -1,98 +1,580 @@
-
 <!DOCTYPE html>
 <html lang="hu">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ARON | 10TH BIRTHDAY</title>
+<title>ARON | 10TH BIRTHDAY VIP PORTAL</title>
+
 <style>
 *{box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+
 body{
  margin:0;
  min-height:100vh;
  color:#fff2ce;
- background:radial-gradient(circle at top,#29345c,#090b19 70%);
+ background:
+ radial-gradient(ellipse at top,#29345c 0%,#11172c 45%,#070914 100%);
  font-family:Georgia,serif;
  text-align:center;
 }
-header{padding:25px;color:#eac36d;letter-spacing:4px}
-.hero{padding:65px 20px 35px}
-.magic{font-size:55px;color:#eac36d;text-shadow:0 0 30px #eac36d}
-h1{font-size:clamp(38px,9vw,68px);margin:15px 0;color:#f5d994}
+
+header{
+ padding:22px 12px;
+ color:#eac36d;
+ letter-spacing:4px;
+ font-size:14px;
+ border-bottom:1px solid #c69b5044;
+}
+
+.hero{padding:55px 18px 25px}
+
+.magic{
+ font-size:65px;
+ color:#eac36d;
+ text-shadow:0 0 30px #eac36d;
+}
+
+h1{
+ font-size:clamp(38px,9vw,68px);
+ margin:15px 0;
+ color:#f5d994;
+}
+
 h1 span{color:#69dff5}
-.subtitle{font-size:18px;color:#c5c9db}
+
+.subtitle{
+ font-size:18px;
+ color:#c5c9db;
+ line-height:1.6;
+}
+
 .card{
- max-width:540px;margin:25px auto;padding:30px 22px;
- background:#11182be8;border:1px solid #c69b50;
- border-radius:18px;box-shadow:0 0 35px #d3a34b22;
+ max-width:650px;
+ margin:25px auto;
+ padding:30px 22px;
+ background:#11182beF;
+ border:1px solid #c69b50;
+ border-radius:18px;
+ box-shadow:0 0 35px #d3a34b22;
 }
+
 h2{color:#eac36d}
-input,button{
- width:100%;padding:15px;margin-top:12px;
- border-radius:9px;font-size:16px;
+
+input,button,textarea{
+ width:100%;
+ padding:15px;
+ margin-top:12px;
+ border-radius:9px;
+ font-size:16px;
 }
-input{background:#080e1e;border:1px solid #64708b;color:white}
+
+input,textarea{
+ background:#080e1e;
+ border:1px solid #64708b;
+ color:white;
+}
+
 button{
  background:linear-gradient(120deg,#ffe5a1,#bd8837);
- color:#171321;border:0;font-weight:bold;cursor:pointer;
+ color:#171321;
+ border:0;
+ font-weight:bold;
+ cursor:pointer;
+ transition:.2s;
 }
-button:hover{filter:brightness(1.15)}
-#result{margin-top:20px;line-height:1.7}
-.features{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin:30px 15px}
-.feature{background:#17213b;border:1px solid #4c5878;padding:17px;border-radius:12px}
-footer{padding:30px;color:#8993ad;font-size:12px;letter-spacing:2px}
+
+button:hover{filter:brightness(1.15);transform:scale(1.02)}
+
+button:disabled{opacity:.5;cursor:not-allowed}
+
+#result{
+ margin-top:20px;
+ line-height:1.7;
+}
+
+.features{
+ display:flex;
+ flex-wrap:wrap;
+ justify-content:center;
+ gap:12px;
+ margin:30px 15px;
+}
+
+.feature{
+ background:#17213b;
+ border:1px solid #4c5878;
+ padding:17px;
+ border-radius:12px;
+}
+
+#partyPage{display:none;padding:10px 15px 40px}
+
+.section{
+ max-width:750px;
+ margin:25px auto;
+ padding:25px 20px;
+ background:#11182beF;
+ border:1px solid #8e713e;
+ border-radius:17px;
+ box-shadow:0 0 25px #d3a34b15;
+}
+
+.section p,.section li{
+ line-height:1.8;
+ color:#e0e3ef;
+}
+
+.section ul{
+ text-align:left;
+ padding-left:25px;
+}
+
+.bigtitle{
+ color:#f5d994;
+ font-size:clamp(30px,7vw,48px);
+ margin:15px 0;
+}
+
+.tag{
+ display:inline-block;
+ padding:8px 13px;
+ margin:5px;
+ border:1px solid #bd974f;
+ border-radius:20px;
+ color:#ffe4a0;
+ background:#1b2541;
+ font-size:13px;
+}
+
+.program-item{
+ text-align:left;
+ padding:15px;
+ margin:12px 0;
+ background:#19233e;
+ border-left:4px solid #d6ad60;
+ border-radius:9px;
+}
+
+.program-item strong{
+ color:#f5d994;
+ font-size:17px;
+}
+
+.program-item p{margin-bottom:0}
+
+.name{
+ color:#69dff5;
+}
+
+.rsvp-buttons{
+ display:flex;
+ flex-direction:column;
+ gap:10px;
+}
+
+.rsvp-buttons button{
+ padding:17px;
+}
+
+.secondary{
+ background:linear-gradient(120deg,#d9e8ff,#8ea8d4);
+}
+
+.message{
+ min-height:90px;
+ resize:vertical;
+}
+
+.hidden{display:none}
+
+footer{
+ padding:30px;
+ color:#8993ad;
+ font-size:12px;
+ letter-spacing:2px;
+}
+
+@media(min-width:600px){
+ .rsvp-buttons{flex-direction:row}
+}
 </style>
 </head>
+
 <body>
+
 <header>✦ ARON VIP PORTAL ✦</header>
 
+<!-- 1. OLDAL: BELÉPÉS -->
+
 <section class="hero">
-<div class="magic">⚡</div>
-<h1>THE <span>10TH</span><br>BIRTHDAY</h1>
-<p class="subtitle">A magical adventure is waiting for you.</p>
-<p>🏰 HOGWARTS • 🎮 GAMER • ⭐ VIP</p>
+ <div class="magic">⚡</div>
+ <h1>THE <span>10TH</span><br>BIRTHDAY</h1>
+ <p class="subtitle">
+ A magical adventure is waiting for you.
+ </p>
+ <p>🏰 HOGWARTS • 🎮 GAMER • ⭐ VIP</p>
 </section>
 
-<section class="card">
-<h2>🪄 Your Invitation</h2>
-<p>Üdv a titkos születésnapi portálon!</p>
-<p>Add meg a személyes meghívókódodat.</p>
-<input id="code" placeholder="MEGHÍVÓKÓD">
-<button onclick="checkInvite()">BELÉPÉS ✨</button>
-<div id="result"></div>
+<section class="card" id="loginCard">
+ <h2>🪄 Your Invitation</h2>
+ <p>Üdv a titkos születésnapi portálon!</p>
+ <p>Add meg a személyes meghívókódodat.</p>
+
+ <input
+  id="code"
+  placeholder="MEGHÍVÓKÓD"
+  autocomplete="off"
+ >
+
+ <button onclick="checkInvite()">BELÉPÉS ✨</button>
+
+ <div id="result"></div>
 </section>
 
-<div class="features">
-<div class="feature">🏰 Harry Potter</div>
-<div class="feature">🔐 Szabadulószoba</div>
-<div class="feature">⭐ VIP meghívás</div>
+<div class="features" id="features">
+ <div class="feature">🏰 Harry Potter</div>
+ <div class="feature">🔐 Szabadulószoba</div>
+ <div class="feature">⭐ VIP meghívás</div>
 </div>
 
-<footer>ARON'S 10TH BIRTHDAY • PRIVATE INVITATION</footer>
+<!-- 2. OLDAL: SZÜLINAPI PORTÁL -->
+
+<main id="partyPage">
+
+ <section class="hero">
+  <div class="magic">🪄</div>
+  <h1>WELCOME TO<br><span>ARON'S WORLD</span></h1>
+  <p class="subtitle">
+   A küldetés elkezdődött!
+  </p>
+  <div class="tag">🏰 HOGWARTS</div>
+  <div class="tag">🎮 GAMER MODE</div>
+  <div class="tag">⭐ VIP ACCESS</div>
+ </section>
+
+ <!-- SZEMÉLYES KÖSZÖNTÉS -->
+
+ <section class="section">
+  <h2>✨ SZIA, <span class="name" id="guestName">VIP VENDÉG</span>!</h2>
+  <p>
+   Sikeresen beléptél! Ez a te személyes meghívód
+   Aron 10. születésnapi partijára.
+  </p>
+  <h2>🎉 KÉSZEN ÁLLSZ?</h2>
+  <button onclick="document.getElementById('details').scrollIntoView({behavior:'smooth'})">
+   MEHETÜNK! 🚀
+  </button>
+ </section>
+
+ <!-- RÓLAM -->
+
+ <section class="section">
+  <h2>👑 RÓLAM – A SZÜLINAPOS</h2>
+  <div style="font-size:45px">🎂</div>
+
+  <h2 class="bigtitle">10 ÉV – EGY NAGY KALAND KEZDETE!</h2>
+
+  <p>
+   2016. november 15-én megszülettem, és most elérkezett
+   egy igazán különleges mérföldkő: a 10. születésnapom! 🥳
+  </p>
+
+  <p>
+   Szerettem volna, hogy ez a nap ne csak egy átlagos
+   születésnap legyen, hanem egy felejthetetlen élmény,
+   tele izgalommal, nevetéssel, barátokkal és kalandokkal.
+  </p>
+
+  <p>
+   Ezért anyukámmal kitaláltuk, hogy egy különleges
+   szabadulószobás bulival ünnepeljük meg ezt a nagy napot! 🔐🪄
+  </p>
+
+  <p>
+   Nagyon várom, hogy együtt fejtsük meg a rejtélyeket,
+   pizzázzunk, tortázzunk és rengeteget nevessünk!
+  </p>
+
+  <h2>🎮 Készen álltok a küldetésre?</h2>
+  <p>❤️ Nagyon várom, hogy találkozzunk!</p>
+ </section>
+
+ <!-- RÉSZLETES INFORMÁCIÓK -->
+
+ <section class="section" id="details">
+  <h2>📜 A KÜLDETÉS ADATAI</h2>
+
+  <div class="program-item">
+   <strong>📅 IDŐPONT</strong>
+   <p>2026. november 13. – péntek</p>
+  </div>
+
+  <div class="program-item">
+   <strong>🏰 HELYSZÍN</strong>
+   <p>Magic Rooms – Varázslóiskola 2</p>
+   <p>1066 Budapest, Ó utca 39.</p>
+   <p>🧙‍♂️ Egy gondolkodós, varázslatos szabadulószobás kaland!</p>
+  </div>
+
+  <div class="program-item">
+   <strong>🕔 KEZDÉS</strong>
+   <p>17:00</p>
+  </div>
+
+  <div class="program-item">
+   <strong>🚗 UTAZÁS</strong>
+   <p>
+    Az iskolai vásár után, 16:00-kor indulunk.
+    Két autóval megyünk a helyszínre.
+   </p>
+  </div>
+
+  <div class="program-item">
+   <strong>🏠 HAZAÉRKEZÉS</strong>
+   <p>
+    A program végén a szülők várhatóan
+    20:00 körül vehetik át a gyerekeket.
+   </p>
+  </div>
+ </section>
+
+ <!-- PROGRAM -->
+
+ <section class="section">
+  <h2>🗺️ A NAP PROGRAMJA</h2>
+
+  <div class="program-item">
+   <strong>🎮 1. MEGÉRKEZÉS</strong>
+   <p>
+    Ismerkedés, beszélgetés, játék, fotózás
+    és ráhangolódás a nagy kalandra!
+   </p>
+  </div>
+
+  <div class="program-item">
+   <strong>🔐 2. VARÁZSLÓISKOLA 2</strong>
+   <p>
+    Együtt megoldjuk a rejtélyeket,
+    megfejtjük a logikai feladványokat,
+    és megpróbálunk kijutni!
+   </p>
+  </div>
+
+  <div class="program-item">
+   <strong>🍕 3. PIZZAPARTY</strong>
+   <p>
+    Jöhet a pizza és a korlátlan szörp!
+   </p>
+  </div>
+
+  <div class="program-item">
+   <strong>🎁 4. AJÁNDÉKOZÁS</strong>
+   <p>
+    Jöhetnek az ajándékok és a meglepetések!
+   </p>
+  </div>
+
+  <div class="program-item">
+   <strong>🎂 5. SNICKERS-TORTA</strong>
+   <p>
+    A nap legédesebb része!
+    Ünneplés, tortázás és közös fotók.
+   </p>
+  </div>
+ </section>
+
+ <!-- ÉTEL ÉS ITAL -->
+
+ <section class="section">
+  <h2>🍕 FOOD & DRINKS</h2>
+
+  <div class="tag">🍕 PIZZA</div>
+  <div class="tag">🥤 KORLÁTLAN SZÖRP</div>
+  <div class="tag">🍫 SNICKERS-TORTA</div>
+
+  <p>
+   Éhesen ne érkezz… vagy mégis! 😁
+   Finom falatok és igazi szülinapi hangulat vár!
+  </p>
+ </section>
+
+ <!-- RSVP -->
+
+ <section class="section" id="rsvp">
+  <h2>✅ RSVP – VISSZAJELZÉS</h2>
+
+  <p>
+   Kérjük, jelezd, hogy részt tudsz-e venni
+   a szülinapi küldetésen!
+  </p>
+
+  <textarea
+   id="guestMessage"
+   class="message"
+   maxlength="500"
+   placeholder="Üzenet a szülinaposnak (nem kötelező) 🎮"
+  ></textarea>
+
+  <div class="rsvp-buttons">
+   <button onclick="sendRSVP('Igen, ott leszek!')">
+    🎉 IGEN, OTT LESZEK!
+   </button>
+
+   <button class="secondary" onclick="sendRSVP('Sajnos nem tudok menni.')">
+    😢 SAJNOS NEM TUDOK MENNI
+   </button>
+  </div>
+
+  <div id="rsvpResult" style="margin-top:20px;line-height:1.7"></div>
+ </section>
+
+ <section class="section">
+  <h2>🏆 A KÜLDETÉS SZABÁLYAI</h2>
+  <p>🪄 Készülj a varázslatra!</p>
+  <p>🧠 Használd az eszed!</p>
+  <p>🤝 Segíts a csapatodnak!</p>
+  <p>😂 Nevess sokat!</p>
+  <p>⭐ És mindenekelőtt: érezd jól magad!</p>
+ </section>
+
+ <footer>
+  ARON'S 10TH BIRTHDAY<br>
+  PRIVATE VIP PORTAL • 2026
+ </footer>
+
+</main>
+
+<footer id="mainFooter">
+ ARON'S 10TH BIRTHDAY • PRIVATE INVITATION
+</footer>
 
 <script>
+let currentToken = null;
+let currentGuest = null;
+
 async function checkInvite(){
- const code=document.getElementById("code").value.trim();
- const result=document.getElementById("result");
+
+ const code = document.getElementById("code").value.trim();
+ const result = document.getElementById("result");
+
  if(!code){
-  result.textContent="Először írd be a kódodat!";
+  result.textContent = "Először írd be a kódodat!";
   return;
  }
- result.textContent="Meghívó ellenőrzése...";
+
+ result.textContent = "Meghívó ellenőrzése... 🪄";
+
  try{
-  const response=await fetch("/api/invite?token="+encodeURIComponent(code));
-  const data=await response.json();
-  if(!response.ok) throw new Error(data.error||"Érvénytelen meghívó!");
-  result.innerHTML="";
-  const title=document.createElement("h2");
-  title.textContent="✨ ÜDVÖZLÜNK, "+data.guest+"!";
-  const text=document.createElement("p");
-  text.textContent="A meghívód érvényes! Készülj a varázslatos kalandra!";
-  result.append(title,text);
+
+  const response = await fetch(
+   "/api/invite?token=" + encodeURIComponent(code)
+  );
+
+  const data = await response.json();
+
+  if(!response.ok){
+   throw new Error(data.error || "Érvénytelen meghívó!");
+  }
+
+  currentToken = code;
+  currentGuest = data.guest;
+
+  result.innerHTML = "";
+
+  const title = document.createElement("h2");
+  title.textContent = "✨ ÜDVÖZLÜNK, " + data.guest + "!";
+
+  const text = document.createElement("p");
+  text.textContent =
+   "A meghívód érvényes! Készülj a varázslatos kalandra!";
+
+  const button = document.createElement("button");
+  button.textContent = "MEHETÜNK! 🚀";
+
+  button.onclick = function(){
+   openParty();
+  };
+
+  result.append(title,text,button);
+
  }catch(error){
-  result.textContent=error.message;
+
+  result.textContent = error.message;
+
  }
 }
+
+function openParty(){
+
+ document.getElementById("loginCard").style.display = "none";
+ document.getElementById("features").style.display = "none";
+ document.getElementById("mainFooter").style.display = "none";
+
+ document.getElementById("partyPage").style.display = "block";
+
+ document.getElementById("guestName").textContent =
+  currentGuest || "VIP VENDÉG";
+
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+
+async function sendRSVP(answer){
+
+ const result = document.getElementById("rsvpResult");
+
+ if(!currentToken){
+  result.textContent = "Előbb lépj be a meghívókódoddal!";
+  return;
+ }
+
+ result.textContent = "Válasz küldése... ✨";
+
+ const buttons = document.querySelectorAll(".rsvp-buttons button");
+ buttons.forEach(button => button.disabled = true);
+
+ try{
+
+  const response = await fetch("/api/rsvp",{
+   method:"POST",
+   headers:{
+    "Content-Type":"application/json"
+   },
+   body:JSON.stringify({
+    token:currentToken,
+    answer:answer,
+    plusOne:0,
+    message:document.getElementById("guestMessage").value
+   })
+  });
+
+  const data = await response.json();
+
+  if(!response.ok){
+   throw new Error(data.error || "Nem sikerült menteni a választ.");
+  }
+
+  result.textContent =
+   "✅ " + (data.message || "A válaszodat elmentettük!");
+
+ }catch(error){
+
+  result.textContent = "⚠️ " + error.message;
+
+ }finally{
+
+  buttons.forEach(button => button.disabled = false);
+
+ }
+}
+
+document.getElementById("code").addEventListener("keydown",function(event){
+ if(event.key === "Enter"){
+  checkInvite();
+ }
+});
 </script>
+
 </body>
 </html>
